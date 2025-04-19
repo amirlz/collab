@@ -1,0 +1,202 @@
+/* -------- Chat Modal Styling -------- */
+
+/* Chat Modal Overlay */
+#chat-modal.modal {
+  z-index: 1000;
+}
+
+/* NDA Modal Overlay */
+#nda-modal.modal {
+  z-index: 2000;
+}
+
+/* Profile Modal Overlay */
+#profile-modal.modal {
+  z-index: 1500;
+}
+
+/* Common Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Chat Modal Content */
+.chat-modal-content {
+  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
+  height: 80%;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* NDA Icon in Chat Modal */
+.chat-nda-icon-container {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+}
+#nda-icon {
+  font-size: 1.5rem;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+#nda-icon:hover {
+  color: #0056b3;
+}
+
+/* Chat Contacts */
+.chat-contacts {
+  background-color: #eef2f7;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chat-contact {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  flex: 0 0 calc(50% - 10px);
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.chat-contact:hover {
+  background-color: #d9eaff;
+}
+.active-contact {
+  border-color: #007bff;
+  background-color: #c0ddff;
+}
+
+/* Chat Messages Area */
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  font-size: 1.1rem;
+}
+.chat-message {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Chat Input Area */
+.chat-input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccc;
+}
+#chat-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+#send-message {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#send-message:hover {
+  background-color: #0056b3;
+}
+
+/* NDA Modal Content */
+.nda-modal-content {
+  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
+  height: auto;
+  max-height: 80%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  padding: 20px;
+  position: relative;
+  overflow-y: auto;
+}
+#sign-nda-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#sign-nda-btn:hover {
+  background-color: #218838;
+}
+
+/* Profile Modal Content */
+.profile-modal-content {
+  width: 40%;
+  max-width: 500px;
+  min-width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  padding: 20px;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* Profile Edit Form Styles */
+#profile-edit-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+#profile-edit-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+#save-profile-btn, #cancel-edit-btn {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+#save-profile-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+#save-profile-btn:hover {
+  background-color: #0056b3;
+}
+#cancel-edit-btn {
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+}

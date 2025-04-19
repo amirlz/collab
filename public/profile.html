@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile</title>
+    <link rel="stylesheet" href="style-profile.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="icon">
+                <img src="photos/profile-1png.png">
+            </div>
+            <h2>Complete Your Profile</h2>
+            <p>Fill in your academic details to get started.</p>
+
+            <form id="profile-form" class="auth-form">
+                <label for="education">Education Level</label>
+                <select id="education" required>
+                    <option value="" disabled selected>Select Education Level</option>
+                    <option value="1er anneé license">1er anneé license</option>
+                    <option value="2eme anneé license">2eme anneé license</option>
+                    <option value="3eme anneé license">3eme anneé license</option>
+                    <option value="1er anneé master">1er anneé master</option>
+                    <option value="2eme anneé master">2eme anne master</option>
+                    <option value="PhD">PhD</option>
+                </select>
+
+                <label for="university">University</label>
+                <select id="university" required>
+                    <option value="" disabled selected>Select University</option>
+                    <option value="université djillali liabes">Université djillali liabes SBA</option>
+                </select>
+
+                <label for="faculty">Faculty</label>
+                <select id="faculty" required>
+                    <option value="" disabled selected>Select Faculty</option>
+                    <option value="genie-electrique">Faculté de Génie Électrique</option>
+                    <option value="sciences-exactes">Faculté des Sciences Exactes</option>
+                    <option value="technologie">Faculté de Technologie</option>
+                    <option value="eco-gestion">Faculté des Sciences Économiques, Commerciales Et des Sciences de Gestion</option>
+                    <option value="humaines-sociales">Faculté des Sciences Humaines Et Sociales</option>
+                    <option value="nature-vie">Faculté des Sciences de La Nature Et de La Vie</option>
+                    <option value="lettres-langues-arts">Faculté des Lettres, des Langues Et des Arts</option>
+                    <option value="medecine">Faculté de Médecine</option>
+                    <option value="sciences-agronomiques">Institut des Sciences Agronomiques</option>
+                    <option value="formation-continue">Université de Formation Continue</option>
+                </select>
+
+                <label for="department">Department</label>
+                <select id="department" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="droit">Département de Droit</option>
+                    <option value="sciences-politiques">Département des Sciences Politiques</option>
+                    <option value="electronique">Département d'Electronique</option>
+                    <option value="electrotechnique">Département d'Electrotechnique</option>
+                    <option value="telecom">Département de Télécommunication</option>
+                    <option value="info">Département d'Informatique</option>
+                    <option value="chimie">Département de Chimie</option>
+                    <option value="automatique">Département d'Automatique</option>
+                    <option value="mathematiques">Département de Mathématiques</option>
+                    <option value="materiaux-durable">Département de Matériaux et de Développement Durable</option>
+                    <option value="physique">Département de Physique</option>
+                    <option value="statistique">Département de Probabilités et de Statistique</option>
+                    <option value="genie-civil">Département de Génie Civil et des Travaux Publics</option>
+                    <option value="energies-procedes">Département des Energies et de Génie des Procédés</option>
+                    <option value="hydraulique">Département d'Hydraulique</option>
+                    <option value="genie-mecanique">Département de Génie Mécanique</option>
+                    <option value="sciences-technologie">Département des Sciences et Technologie</option>
+                    <option value="sciences-commerciales">Département des Sciences Commerciales</option>
+                    <option value="sciences-gestion">Département des Sciences de Gestion</option>
+                    <option value="sciences-economiques">Département des Sciences Économiques</option>
+                    <option value="finance-comptabilite">Département des Sciences Financière et Comptabilité</option>
+                    <option value="sciences-humaines">Département des Sciences Humaines</option>
+                    <option value="sciences-sociales">Département des Sciences Sociales</option>
+                    <option value="biologie">Département de Biologie</option>
+                    <option value="sciences-agronomie">Département des Sciences de l'Agronomie</option>
+                    <option value="environnement">Département des Sciences de l'Environnement</option>
+                    <option value="langue-allemande">Département de Langue Allemande</option>
+                    <option value="langue-anglaise">Département de Langue Anglaise</option>
+                    <option value="langue-arabe">Département de Langue et Littérature Arabe</option>
+                    <option value="langue-francaise">Département de Langue Française</option>
+                    <option value="arts">Département des Arts</option>
+                    <option value="medecine">Département de Médecine</option>
+                    <option value="medecine-dentaire">Département de Médecine Dentaire</option>
+                    <option value="pharmacie">Département de Pharmacie</option>
+                    <option value="sciences-agronomiques">Département des Sciences Agronomiques</option>
+                </select>
+
+                <label for="skills">Skills (optional)</label>
+                    <input type="text" id="skills" placeholder="Enter Skills separated by a comma(,)">
+
+                <button type="submit">Save & Continue</button>
+            </form>
+        </div>
+    </div>
+    <script src="complete-profile.js" defer></script>
+
+   
+
+</body>
+</html>

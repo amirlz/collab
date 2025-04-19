@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Centering the card */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('photos/backdround-1.png') center/cover no-repeat;
+}
+
+/* Auth card design */
+.auth-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 330px;
+    
+}
+
+
+/* Form styling */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.8s ease-in-out;
+}
+.auth-form-hidden{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Hide form smoothly */
+.hidden {
+    display: none;
+}
+
+/* Input fields */
+input {
+    padding: 12px;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+}
+
+/* Button styling */
+button {
+    padding: 10px;
+    background: #6a0dad;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background: #7b18c2;
+}
+button:active{
+    opacity: 0.9;
+}
+
+/* Text links */
+p span {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+h2{
+  color: #6a0dad;
+  margin-bottom: 15px;
+}
+p {
+    margin-top: 20px; 
+}

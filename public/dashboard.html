@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Collab</title>
+  <link rel="stylesheet" href="style-dash.css">
+  <link rel="stylesheet" href="style-chat.css">
+  <!-- FontAwesome (Latest Version) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>Collab</h2>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search by skills, education, university, faculty, or department">
+      <button id="search-btn" type="submit">Search</button>
+    </form>
+    <div class="nav-icons">
+      <!-- Chat Icon with Online Status -->
+      <div class="chat-icon-container">
+        <i class="fas fa-comments" id="chat-icon"></i>
+        <span id="online-status" class="online-status">Offline</span>
+      </div>
+      <!-- Profile Icon (clickable) -->
+      <div class="profile-menu">
+        <img src="photos/profile-1png.png" alt="Profile" id="profile-icon">
+        <!-- Removed profile-dropdown to let the modal handle profile display -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <!-- Left Section (Explore Students) -->
+    <div class="explore-students">
+      <h3>Explore Students</h3>
+      <div id="students-list">
+        <!-- Student profiles will be added here dynamically -->
+      </div>
+    </div>
+    <!-- Pending Connection Requests -->
+    <div class="pending-requests-container">
+      <h3>Pending Connection Requests</h3>
+      <div id="pending-requests">
+        <!-- Pending requests will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="quick-links">
+      <a href="#" id="about-link">About</a>
+    </div>
+    <div class="legal-info">
+      <a href="#" id="nda-link">Electronic Contract (NDA) Policy</a>
+    </div>
+  </footer>
+
+  <!-- About Modal -->
+  <div class="modal hidden" id="about-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-about">&times;</span>
+      <h2>About Collab</h2>
+      <p>Collab is a student collaboration platform designed to help Algerian students connect, find teammates, and work on projects securely.</p>
+      <!-- Additional about content -->
+    </div>
+  </div>
+
+  <!-- Chat Modal Popup -->
+  <div class="modal hidden" id="chat-modal">
+    <div class="modal-content chat-modal-content">
+      <span class="close-btn" id="close-chat">&times;</span>
+
+      <!-- NDA Icon -->
+      <div class="chat-nda-icon-container">
+        <i class="fas fa-handshake" id="nda-icon" title="Non-Disclosure Agreement"></i>
+      </div>
+
+      <!-- Container for connected users -->
+      <div id="chat-contacts" class="chat-contacts">
+        <h3>Your Contacts</h3>
+        <!-- List of connected users will be rendered here -->
+      </div>
+
+      <!-- Chat Messages Area -->
+      <div id="chat-messages" class="chat-messages"></div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type a message...">
+        <button id="send-message">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NDA Modal (Appears Above Chat Modal) -->
+  <div class="modal hidden" id="nda-modal">
+    <div class="modal-content nda-modal-content">
+      <span class="close-btn" id="close-nda">&times;</span>
+      <h2>Non-Disclosure Agreement (NDA) Policy</h2>
+      <p>
+        Collab ensures that students can share ideas safely through a mandatory Non-Disclosure Agreement (NDA) 
+        before discussing sensitive information.
+      </p>
+      <h3>What is an NDA?</h3>
+      <p>A Non-Disclosure Agreement (NDA) is a legal contract that ensures all parties agree to keep shared 
+        project details confidential.</p>
+      <h3>When is an NDA Required?</h3>
+      <ul>
+        <li>Before discussing project details with another student.</li>
+        <li>Before sharing documents, research, or business ideas.</li>
+        <li>When entering a collaboration involving intellectual property.</li>
+      </ul>
+      <h3>How Does It Work?</h3>
+      <ul>
+        <li>When a collaboration request is sent, an electronic NDA is generated.</li>
+        <li>Both parties must sign the NDA before continuing the discussion.</li>
+        <li>All video calls where project ideas are discussed are recorded for documentation.</li>
+      </ul>
+      <h3>Why This Matters</h3>
+      <p>
+        Collab ensures a secure environment where students can collaborate with confidence, 
+        knowing their ideas are legally protected.
+      </p>
+      <!-- Sign NDA Button -->
+      <button id="sign-nda-btn">Sign NDA</button>
+    </div>
+  </div>
+
+  <!-- Profile Modal (For viewing and editing user profile) -->
+  <div class="modal hidden" id="profile-modal">
+    <div class="modal-content profile-modal-content">
+      <span class="close-btn" id="close-profile">&times;</span>
+      <h2>Your Profile</h2>
+
+      <!-- Read-Only Display -->
+      <div id="profile-display">
+        <p><strong>Name:</strong> <span id="profile-name"></span></p>
+        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        <p><strong>Education Level:</strong> <span id="profile-education"></span></p>
+        <p><strong>University:</strong> <span id="profile-university"></span></p>
+        <p><strong>Faculty:</strong> <span id="profile-faculty"></span></p>
+        <p><strong>Department:</strong> <span id="profile-department"></span></p>
+        <p><strong>Skills:</strong> <span id="profile-skills"></span></p>
+        <button id="edit-profile-btn">Edit Profile</button>
+      </div>
+
+      <!-- Editable Form -->
+      <form id="profile-edit-form" class="hidden">
+        <label for="edit-name">Name:</label>
+        <input type="text" id="edit-name" name="name">
+
+        <label for="edit-email">Email:</label>
+        <input type="email" id="edit-email" name="email">
+
+        <label for="edit-education">Education Level:</label>
+        <input type="text" id="edit-education" name="education">
+
+        <label for="edit-university">University:</label>
+        <input type="text" id="edit-university" name="university">
+
+        <label for="edit-faculty">Faculty:</label>
+        <input type="text" id="edit-faculty" name="faculty">
+
+        <label for="edit-department">Department:</label>
+        <input type="text" id="edit-department" name="department">
+
+        <label for="edit-skills">Skills (comma-separated):</label>
+        <input type="text" id="edit-skills" name="skills">
+
+        <button type="submit" id="save-profile-btn">Save Changes</button>
+        <button type="button" id="cancel-edit-btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Include Socket.io client from a CDN -->
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <!-- Include Frontend JS Files -->
+  <script src="search.js"></script>
+  <script src="users.js"></script>
+  <script src="connections.js"></script>
+  <script src="chat.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>

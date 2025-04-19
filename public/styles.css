@@ -1,0 +1,145 @@
+       /* Basic body styling */
+       body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+    
+    /* Hero section styling with gradient background */
+    .hero {
+        background: linear-gradient(to right, #007bff, #6a0dad);
+        color: white;
+        padding: 50px 20px;
+    }
+    
+    /* Hero section heading */
+    .hero h1 {
+        font-size: 4em;
+        margin-bottom: 35px;
+    }
+    
+    .hero h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+    /* Hero section paragraph */
+    .hero p {
+        font-size: 1.2em;
+    }
+    
+    /* Call-to-action button styling */
+    .cta-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background: #6a0dad;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        margin-top: 20px;
+        transition: 0.15 s ease-in;
+    }
+    .cta-button:hover{
+        background-color: #7b18c2;
+        padding: 17px 32px;
+        font-size: 1.4em;
+    }
+    .cta-button:active{
+        opacity: 0.7;
+    }
+
+    /* how iy works section */
+    
+    .works{
+        display: inline-block;
+        margin: 25px;
+        
+    }
+    .steps{
+        display: inline-block;
+        margin: 25px;
+        min-width: 200px; 
+        max-width: 290px; 
+    }
+    .steps img{
+        width: 150px;  
+    }
+    
+    /* Features section styling */
+
+.features {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Center Image */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.center-img {
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Feature Blocks */
+.features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.features-grid.right {
+    align-items: flex-end;
+}
+
+/* Individual Feature */
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: left;
+    font-size: 1.1rem; /* Slightly larger text */
+    font-weight: 500;
+}
+
+/* Feature Icons */
+.feature img {
+    width: 90px;
+    height: 80px;
+}
+
+
+
+    /* Footer styling */
+    .footer {
+        background: #6a0dad;
+        color: white;
+        padding: 20px;
+    }
+
+    
+    

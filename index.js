@@ -19,6 +19,10 @@ const messageRoutes = require("./routes/messages");
 const ndaRoutes = require("./routes/nda");
 const userRoutes = require("./routes/users");
 
+//serving Static Frontend
+const path = require('path');
+
+
 app.use("/api/auth", authRoutes);
 app.use("/api/search", searchRoutes);
 app.use("/api/connections", connectionsRoutes);
@@ -26,6 +30,13 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/nda", ndaRoutes);
 app.use("/api/users", userRoutes);
 
+// Serve static frontend from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Optional: When someone visits the root URL, show the landing page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 
 const PORT = process.env.PORT || 5001;
