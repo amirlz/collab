@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
     await newUser.save();
     
     // Generate a JWT token with the new user's id and email
-    const token = jwt.sign({ id: newUser._id, email: newUser.email }, "secretkey", { expiresIn: "1h" });
+    const token = jwt.sign({ id: newUser._id, email: newUser.email }, process.env.JWT_SECRET || "fallback-secret", { expiresIn: "1h" });
     
     console.log("✅ User registered:", newUser.email);
     
