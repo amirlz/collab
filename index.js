@@ -94,4 +94,17 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("🔴 A user disconnected:", socket.id);
         for (const userId in onlineUsers) {
-            if (onlineUsers[userId] === socke
+            if (onlineUsers[userId] === socket.id) {
+                console.log(`❌ User ${userId} is now offline.`);
+                delete onlineUsers[userId];
+                break;
+            }
+        }
+    });
+});
+
+// Start server using the HTTP server (for Socket.io)
+server.listen(PORT, () => {
+    console.log(`✅ Server running on http://localhost:${PORT}`);
+});
+
