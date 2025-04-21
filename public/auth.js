@@ -14,7 +14,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
     const requestData = { name, email, password };
 
     try {
-        const response = await fetch("http://localhost:5001/api/auth/register", {
+        const response = await fetch("/api/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
@@ -45,7 +45,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
     const requestData = { email, password };
 
     try {
-        const response = await fetch("http://localhost:5001/api/auth/login", {
+        const response = await fetch("/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
