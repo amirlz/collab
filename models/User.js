@@ -10,7 +10,9 @@ const userSchema = new mongoose.Schema({
     department: { type: String, default: "" },
     skills: { type: [String], default: [] } ,
     connectionRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Store user IDs who sent requests
-    connectedUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }] // Store accepted connections
+    connectedUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Store accepted connections
+    role: { type: String, enum: ["user", "admin"], default: "user" }
 });
 
 module.exports = mongoose.model("User", userSchema);
+

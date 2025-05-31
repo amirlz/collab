@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     
     // Create a new user
-    const newUser = new User({ name, email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword, role: "user" }); 
     await newUser.save();
     
     // Generate a JWT token with the new user's id and email
@@ -70,7 +70,13 @@ router.post('/login', async (req, res) => {
     res.status(200).json({
       message: "Login successful",
       token,
-      user
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+
     });
   } catch (error) {
     console.error("❌ Login error:", error);

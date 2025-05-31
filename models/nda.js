@@ -2,8 +2,8 @@
 const mongoose = require("mongoose");
 
 const ndaSchema = new mongoose.Schema({
-  userA: { type: String, required: true },
-  userB: { type: String, required: true },
+  userA: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  userB: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   userASigned: { type: Boolean, default: false },
   userBSigned: { type: Boolean, default: false }
 });

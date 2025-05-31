@@ -1,0 +1,120 @@
+/* Admin Dashboard - Reuses base styles from style-dash.css */
+
+/* Reuse Global Reset & Base Styles */
+@import url('style-dash.css');
+
+/* Override or extend styles for admin-specific elements */
+
+/* Highlight admin page with a slightly different tone */
+.navbar {
+  background: linear-gradient(to right, #ff5722, #d32f2f, #9c27b0); /* Admin colors */
+}
+/* Admin Profile Modal Tweaks */
+.profile-modal-content {
+  background-color: #fefefe;
+  font-size: 1rem;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+#profile-edit-form label {
+  margin-bottom: 4px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+#profile-edit-form input {
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  transition: border 0.2s;
+}
+
+#profile-edit-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#save-profile-btn {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+#save-profile-btn:hover {
+  background-color: #0056b3;
+}
+
+#cancel-edit-btn {
+  background-color: #eaeaea;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+#cancel-edit-btn:hover {
+  background-color: #d6d6d6;
+}
+
+.explore-students h3::after,
+.pending-requests-container h3::after {
+  content: " (Admin View)";
+  font-weight: normal;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* Add spacing and structure to connected user list */
+#connected-users-list li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* Admin buttons (delete) should be more intense */
+#delete-user-btn {
+  background-color: #d32f2f;
+  margin-top: 15px;
+}
+
+#delete-user-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Admin Dashboard Layout Enhancements */
+.dashboard-container {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+/* Sidebar look for selected user area */
+#selected-user-details {
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+#selected-user-details p {
+  margin-bottom: 8px;
+}
+
+/* Improve card display */
+.student-card {
+  justify-content: space-between;
+  padding-right: 15px;
+}
+
+/* Admin Footer */
+.footer {
+  border-top: 1px solid #ddd;
+  background: #fafafa;
+  color: #555;
+}
+
+.quick-links a,
+.legal-info a {
+  color: #ff5722;
+  font-weight: bold;
+}
