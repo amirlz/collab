@@ -1,37 +1,35 @@
 require('dotenv').config();
 
-// routes/auth.js
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
-// REGISTER endpoint
+// REGISTER
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    
-    // Check if a user with the same email already exists
+
     const existingUser = await User.findOne({ email });
-    if(existingUser) {
+    if (existingUser) {
       return res.status(400).json({ message: "Email already registered." });
     }
-    
-    // Hash the password before saving to the database
+
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    
-    // Create a new user
-    const newUser = new User({ name, email, password: hashedPassword, role: "user" }); 
+
+    const newUser = new User({ name, email, password: hashedPassword, role: "user" });
     await newUser.save();
-    
-    // Generate a JWT token with the new user's id and email
-    const token = jwt.sign({ id: newUser._id, email: newUser.email }, process.env.JWT_SECRET || "fallback-secret", { expiresIn: "1h" });
-    
+
+    const token = jwt.sign(
+      { id: newUser._id, email: newUser.email },
+      process.env.JWT_SECRET || "fallback-secret",
+      { expiresIn: "1h" }
+    );
+
     console.log("✅ User registered:", newUser.email);
-    
-    // Respond with a success message, token, and the new user object
+
     res.status(201).json({
       message: "Signup successful",
       token,
@@ -43,49 +41,45 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// LOGIN endpoint
+// LOGIN
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
-        console.log("🔍 Incoming login for:", email);
-    const user = await User.findOne({ email });
-    if (!user) {
+
+    console.log("🔍 Incoming login for:", email);
+    const foundUser = await User.findOne({ email });
+
+    if (!foundUser) {
       console.log("❌ User not found");
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    console.log("🧠 Hashed password from DB:", user.password);
 
+    console.log("🧠 Hashed password from DB:", foundUser.password);
 
-    // Find the user in the database by email
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
-
-    // Compare the given password with the stored hashed password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, foundUser.password);
     if (!isMatch) {
+      console.log("🔐 Password mismatch");
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Generate a JWT token containing the user's id and email
     const JWT_SECRET = process.env.JWT_SECRET || "fallback-secret";
-    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign(
+      { id: foundUser._id, email: foundUser.email },
+      JWT_SECRET,
+      { expiresIn: "1h" }
+    );
 
-    console.log("✅ User logged in:", user.email);
+    console.log("✅ User logged in:", foundUser.email);
 
-    // Send the response including the message, token, and the user object
     res.status(200).json({
       message: "Login successful",
       token,
       user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
+        id: foundUser._id,
+        name: foundUser.name,
+        email: foundUser.email,
+        role: foundUser.role
       }
-
     });
   } catch (error) {
     console.error("❌ Login error:", error);
@@ -93,16 +87,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-//Complete Profile api
+// COMPLETE PROFILE
 router.put('/complete-profile', async (req, res) => {
   try {
-    // Expecting the userId along with the profile fields
     const { userId, education, university, faculty, department, skills } = req.body;
     if (!userId) {
       return res.status(400).json({ message: "User ID is required." });
     }
 
-    // Update the user document with the provided fields
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { education, university, faculty, department, skills },
