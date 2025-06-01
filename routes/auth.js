@@ -47,6 +47,15 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    
+        console.log("🔍 Incoming login for:", email);
+    const user = await User.findOne({ email });
+    if (!user) {
+      console.log("❌ User not found");
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+    console.log("🧠 Hashed password from DB:", user.password);
+
 
     // Find the user in the database by email
     const user = await User.findOne({ email });
